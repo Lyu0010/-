@@ -23,28 +23,29 @@ public class BankApplication {
             System.out.println("-------------------------------------------------");
             System.out.print("선택> ");
             
-            int selectNo;
-            try {
-                selectNo = scanner.nextInt();
-                scanner.nextLine();
-            } catch (java.util.InputMismatchException e) {
-                System.out.println("잘못된 입력입니다. 숫자를 입력해 주세요.");
-                scanner.nextLine();
-                continue;
-            }
+            int selectNum;
+            selectNum = scanner.nextInt();
+            scanner.nextLine();
 
-            if (selectNo == 1) {
-                createAccount.execute(scanner, accountManager);
-            } else if (selectNo == 2) {
-                accountList();
-            } else if (selectNo == 3) {
-                deposit.execute(scanner, accountManager);
-            } else if (selectNo == 4) {
-                withdrawal.execute(scanner, accountManager);
-            } else if (selectNo == 5) {
-                run = false;
-            } else {
-                System.out.println("잘못된 메뉴 번호입니다. 다시 선택해 주세요.");
+            switch (selectNum) {
+                case 1:
+                    createAccount.execute(scanner, accountManager);
+                    break;
+                case 2:
+                    accountList();
+                    break;
+                case 3:
+                    deposit.execute(scanner, accountManager);
+                    break;
+                case 4:
+                    withdrawal.execute(scanner, accountManager);
+                    break;
+                case 5:
+                    run = false;
+                    break;
+                default:
+                    System.out.println("잘못된 메뉴 번호입니다. 다시 선택해 주세요.");
+                    break;
             }
         }
         
